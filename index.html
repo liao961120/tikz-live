@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)https://tikzjax-demo.glitch.me/ -->
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>TikZJax</title>
+  <link rel="stylesheet" type="text/css" href="./TikZJax_files/style.css">
+  <script src="./TikZJax_files/tikzjax.js"></script>
+  <script src="./TikZJax_files/script.js" defer=""></script>
+
+</head>
+
+<body>
+
+  <h1 id="tikzjax">TikZJax</h1>
+  <p>
+    TikZ is running entirely in the browser!
+  </p>
+
+  <section id="editor">
+
+    <textarea id="code" spellcheck="false" onkeydown="setHeight('code');" data-gramm_editor="false">
+\usetikzlibrary{arrows,automata}
+  \begin{tikzpicture}[
+            > = stealth, % arrow head style
+            shorten > = 1pt, % don't touch arrow head to node
+            auto,
+            node distance = 3cm, % distance between nodes
+            semithick % line style
+        ]
+
+        \tikzstyle{every state}=[
+            draw = black,
+            thick,
+            fill = white,
+            minimum size = 4mm
+        ]
+
+        \node[draw, circle] (n1) {$L_1$};
+        \node[] (n2) [right of=n1] {$L_2$};
+        
+        \path[->] (n1) edge node {$1$} (n2);
+        \path[->] (n2) edge[densely dashed,bend right=50] node[above] {$4$} (n1);
+\end{tikzpicture}
+</textarea>
+
+    <div id="output"></div>
+  </section>
+
+
+  <script>
+    function setHeight(fieldId) {
+      document.getElementById(fieldId).style.height = "";
+      document.getElementById(fieldId).style.height = document.getElementById(fieldId).scrollHeight + 'px';
+    }
+    setHeight('code');
+  </script>
+
+  <style>
+    textarea {
+      white-space: nowrap;
+    }
+  </style>
+
+<footer>
+    <hr>
+    <p>
+      This uses TikZJax, by <a href="mailto:fowler@math.osu.edu">Jim Fowler</a>. The <a
+        href="https://github.com/kisonecat/tikzjax">source is on GitHub</a>.
+    </p>
+  </footer>
+</body>  
+
+</html>
